@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "W": [
+      {
+        "item": "minecraft:mangrove_log"
+      },
+      {
+        "item": "minecraft:mangrove_wood"
+      }
+    ],
+    "#": {
+      "item": "minecraft:stick"
+    },
+    "X": {
+      "item": "minecraft:string"
+    }
+  },
+  "pattern": [
+    " #X",
+    "#WX",
+    " #X"
+  ],
+  "result": {
+    "item": "more_bows_and_arrows:mangrove_bow"
+  },
+  "show_notification": true
+}

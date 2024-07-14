@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "W": [
+      {
+        "item": "minecraft:stripped_jungle_log"
+      },
+      {
+        "item": "minecraft:stripped_jungle_wood"
+      }
+    ],
+    "#": {
+      "item": "minecraft:stick"
+    },
+    "X": {
+      "item": "minecraft:string"
+    }
+  },
+  "pattern": [
+    " #X",
+    "#WX",
+    " #X"
+  ],
+  "result": {
+    "item": "more_bows_and_arrows:stripped_jungle_bow"
+  },
+  "show_notification": true
+}
