@@ -20,33 +20,26 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 public class EnderPearlArrowEntity extends AbstractArrow implements IAbstractModArrow {
-    
-    public EnderPearlArrowEntity(EntityType<? extends EnderPearlArrowEntity> entType, Level level, ItemStack itemStack) {
-        super(entType, level, itemStack);
-        this.setBaseDamage(this.getBaseDamage() + 4.0);
+
+    public EnderPearlArrowEntity(EntityType<? extends AbstractArrow> entityEntityType, Level level) {
+        super(entityEntityType, level);
+        this.setBaseDamage(this.getBaseDamage() + 4.0d);
     }
-    
-    public EnderPearlArrowEntity(Level level, LivingEntity liveEntity, ItemStack itemStack) {
-        super(FabricEntityTypeRegistry.ENDER_PEARL_ARROW_ENTITY, liveEntity, level, itemStack);
+
+    public EnderPearlArrowEntity(double d, double e, double f, Level level, ItemStack itemStack, @Nullable ItemStack itemStack2) {
+        super(FabricEntityTypeRegistry.ENDER_PEARL_ARROW_ENTITY, d, e, f, level, itemStack, itemStack2);
         this.setBaseDamage(this.getBaseDamage() + 4.0);
-        if (liveEntity instanceof Player && ((Player)liveEntity).getAbilities().instabuild) {
+        if (this.getOwner() instanceof Player && ((Player) this.getOwner()).getAbilities().instabuild) {
             this.pickup = Pickup.CREATIVE_ONLY;
         }
     }
-    
-    public EnderPearlArrowEntity(Level level, double x, double y, double z, ItemStack itemStack) {
-        super(FabricEntityTypeRegistry.ENDER_PEARL_ARROW_ENTITY, x, y, z, level, itemStack);
-        this.setBaseDamage(this.getBaseDamage() + 4.0);
-    }
-    
-    public EnderPearlArrowEntity(Level level, LivingEntity liveEntity) {
-        this(level, liveEntity, new ItemStack(FabricItemRegistry.ENDER_PEARL_ARROW_ITEM));
-    }
-    
-    public EnderPearlArrowEntity(EntityType<EnderPearlArrowEntity> EnderPearlArrowEntityEntityType, Level level) {
-        this(EnderPearlArrowEntityEntityType, level, new ItemStack(FabricItemRegistry.ENDER_PEARL_ARROW_ITEM));
+
+    public EnderPearlArrowEntity(Level level, LivingEntity livingEntity, ItemStack itemStack, ItemStack itemStack2) {
+        super(FabricEntityTypeRegistry.AMETHYST_ARROW_ENTITY, livingEntity, level, itemStack, itemStack);
+        this.setBaseDamage(this.getBaseDamage() + 4.0d);
     }
 
     public void onHitEntity(@NotNull EntityHitResult hitResult) {

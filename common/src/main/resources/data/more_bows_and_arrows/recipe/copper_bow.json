@@ -15,7 +15,7 @@
     " #X"
   ],
   "result": {
-    "item": "more_bows_and_arrows:copper_bow"
+    "id": "more_bows_and_arrows:copper_bow"
   },
   "show_notification": true
 }

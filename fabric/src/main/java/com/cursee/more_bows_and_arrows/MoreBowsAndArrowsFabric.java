@@ -17,7 +17,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.DispenserBlock;
 
-public class FabricExampleMod implements ModInitializer {
+public class MoreBowsAndArrowsFabric implements ModInitializer {
 
     public static boolean debuggingEnabled = false;
 

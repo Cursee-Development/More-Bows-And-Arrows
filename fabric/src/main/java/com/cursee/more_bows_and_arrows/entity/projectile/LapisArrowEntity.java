@@ -17,33 +17,26 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 public class LapisArrowEntity extends AbstractArrow implements IAbstractModArrow {
-    
-    public LapisArrowEntity(EntityType<? extends LapisArrowEntity> entType, Level level, ItemStack itemStack) {
-        super(entType, level, itemStack);
-        this.setBaseDamage(this.getBaseDamage() + 4.0);
+
+    public LapisArrowEntity(EntityType<? extends AbstractArrow> entityEntityType, Level level) {
+        super(entityEntityType, level);
+        this.setBaseDamage(this.getBaseDamage() + 4.0d);
     }
-    
-    public LapisArrowEntity(Level level, LivingEntity liveEntity, ItemStack itemStack) {
-        super(FabricEntityTypeRegistry.LAPIS_ARROW_ENTITY, liveEntity, level, itemStack);
+
+    public LapisArrowEntity(double d, double e, double f, Level level, ItemStack itemStack, @Nullable ItemStack itemStack2) {
+        super(FabricEntityTypeRegistry.LAPIS_ARROW_ENTITY, d, e, f, level, itemStack, itemStack2);
         this.setBaseDamage(this.getBaseDamage() + 4.0);
-        if (liveEntity instanceof Player && ((Player)liveEntity).getAbilities().instabuild) {
+        if (this.getOwner() instanceof Player && ((Player) this.getOwner()).getAbilities().instabuild) {
             this.pickup = Pickup.CREATIVE_ONLY;
         }
     }
-    
-    public LapisArrowEntity(Level level, double x, double y, double z, ItemStack itemStack) {
-        super(FabricEntityTypeRegistry.LAPIS_ARROW_ENTITY, x, y, z, level, itemStack);
-        this.setBaseDamage(this.getBaseDamage() + 4.0);
-    }
-    
-    public LapisArrowEntity(Level level, LivingEntity liveEntity) {
-        this(level, liveEntity, new ItemStack(FabricItemRegistry.LAPIS_ARROW_ITEM));
-    }
-    
-    public LapisArrowEntity(EntityType<LapisArrowEntity> LapisArrowEntityEntityType, Level level) {
-        this(LapisArrowEntityEntityType, level, new ItemStack(FabricItemRegistry.LAPIS_ARROW_ITEM));
+
+    public LapisArrowEntity(Level level, LivingEntity livingEntity, ItemStack itemStack, ItemStack itemStack2) {
+        super(FabricEntityTypeRegistry.AMETHYST_ARROW_ENTITY, livingEntity, level, itemStack, itemStack);
+        this.setBaseDamage(this.getBaseDamage() + 4.0d);
     }
 
     public void onHitEntity(@NotNull EntityHitResult hitResult) {

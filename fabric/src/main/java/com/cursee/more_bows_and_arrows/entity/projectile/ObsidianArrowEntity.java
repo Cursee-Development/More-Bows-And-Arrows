@@ -17,33 +17,26 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 public class ObsidianArrowEntity extends AbstractArrow implements IAbstractModArrow {
-    
-    public ObsidianArrowEntity(EntityType<? extends ObsidianArrowEntity> entType, Level level, ItemStack itemStack) {
-        super(entType, level, itemStack);
-        this.setBaseDamage(this.getBaseDamage() + 4.0);
+
+    public ObsidianArrowEntity(EntityType<? extends AbstractArrow> entityEntityType, Level level) {
+        super(entityEntityType, level);
+        this.setBaseDamage(this.getBaseDamage() + 4.0d);
     }
-    
-    public ObsidianArrowEntity(Level level, LivingEntity liveEntity, ItemStack itemStack) {
-        super(FabricEntityTypeRegistry.OBSIDIAN_ARROW_ENTITY, liveEntity, level, itemStack);
+
+    public ObsidianArrowEntity(double d, double e, double f, Level level, ItemStack itemStack, @Nullable ItemStack itemStack2) {
+        super(FabricEntityTypeRegistry.OBSIDIAN_ARROW_ENTITY, d, e, f, level, itemStack, itemStack2);
         this.setBaseDamage(this.getBaseDamage() + 4.0);
-        if (liveEntity instanceof Player && ((Player)liveEntity).getAbilities().instabuild) {
+        if (this.getOwner() instanceof Player && ((Player) this.getOwner()).getAbilities().instabuild) {
             this.pickup = Pickup.CREATIVE_ONLY;
         }
     }
-    
-    public ObsidianArrowEntity(Level level, double x, double y, double z, ItemStack itemStack) {
-        super(FabricEntityTypeRegistry.OBSIDIAN_ARROW_ENTITY, x, y, z, level, itemStack);
-        this.setBaseDamage(this.getBaseDamage() + 4.0);
-    }
-    
-    public ObsidianArrowEntity(Level level, LivingEntity liveEntity) {
-        this(level, liveEntity, new ItemStack(FabricItemRegistry.OBSIDIAN_ARROW_ITEM));
-    }
-    
-    public ObsidianArrowEntity(EntityType<ObsidianArrowEntity> ObsidianArrowEntityEntityType, Level level) {
-        this(ObsidianArrowEntityEntityType, level, new ItemStack(FabricItemRegistry.OBSIDIAN_ARROW_ITEM));
+
+    public ObsidianArrowEntity(Level level, LivingEntity livingEntity, ItemStack itemStack, ItemStack itemStack2) {
+        super(FabricEntityTypeRegistry.AMETHYST_ARROW_ENTITY, livingEntity, level, itemStack, itemStack);
+        this.setBaseDamage(this.getBaseDamage() + 4.0d);
     }
 
     public void onHitEntity(@NotNull EntityHitResult hitResult) {

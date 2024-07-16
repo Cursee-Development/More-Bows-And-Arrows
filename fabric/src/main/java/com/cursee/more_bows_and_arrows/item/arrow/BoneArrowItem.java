@@ -6,7 +6,9 @@
 package com.cursee.more_bows_and_arrows.item.arrow;
 
 import com.cursee.more_bows_and_arrows.entity.projectile.AmethystArrowEntity;
+import com.cursee.more_bows_and_arrows.entity.projectile.BambooArrowEntity;
 import com.cursee.more_bows_and_arrows.entity.projectile.BoneArrowEntity;
+import com.cursee.more_bows_and_arrows.registry.FabricEntityTypeRegistry;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Position;
 import net.minecraft.network.chat.Component;
@@ -19,6 +21,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -29,16 +32,18 @@ public class BoneArrowItem extends ArrowItem {
 
     public void appendHoverText(ItemStack itemStack, TooltipContext tooltipContext, List<Component> tooltip, TooltipFlag tooltipFlag) {
         super.appendHoverText(itemStack, tooltipContext, tooltip, tooltipFlag);
-        tooltip.add(Component.translatable("morebowsandarrows.text.bone_arrow_damage"));
-    }
-    
-    public @NotNull AbstractArrow createArrow(@NotNull Level level, @NotNull ItemStack arrowItem, @NotNull LivingEntity livingEntity) {
-        return new BoneArrowEntity(level, livingEntity, arrowItem);
+        tooltip.add(Component.translatable("more_bows_and_arrows.text.bone_arrow_damage"));
     }
 
-    public Projectile asProjectile(Level p_331476_, Position p_329787_, ItemStack p_328274_, Direction p_330256_) {
-        BoneArrowEntity $$4 = new BoneArrowEntity(p_331476_, p_329787_.x(), p_329787_.y(), p_329787_.z(), p_328274_.copyWithCount(1));
-        $$4.pickup = Pickup.ALLOWED;
+    @Override
+    public AbstractArrow createArrow(Level level, ItemStack itemStack, LivingEntity livingEntity, @Nullable ItemStack itemStack2) {
+        return new BoneArrowEntity(level, livingEntity, itemStack.copyWithCount(1), itemStack2);
+    }
+
+    public Projectile asProjectile(Level level, Position pos, ItemStack stack, Direction direction) {
+//    AmethystArrowEntity $$4 = new AmethystArrowEntity(level, pos.x(), pos.y(), pos.z(), stack.copyWithCount(1));
+        BoneArrowEntity $$4 = new BoneArrowEntity(pos.x(), pos.y(), pos.z(), level, stack.copyWithCount(1), null);
+        $$4.pickup = AbstractArrow.Pickup.ALLOWED;
         return $$4;
     }
 }

@@ -15,7 +15,7 @@ for filename in os.listdir(folder_path):
             file_data = file.read()
 
         # Replace the string
-        file_data = file_data.replace('net.jason13.morebowsandarrows', 'com.cursee.more_bows_and_arrows')
+        file_data = file_data.replace('morebowsandarrows', 'more_bows_and_arrows')
 
         # Write the modified content back to the file
         with open(file_path, 'w', encoding='utf-8') as file:

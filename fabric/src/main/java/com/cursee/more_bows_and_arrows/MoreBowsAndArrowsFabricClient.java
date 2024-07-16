@@ -6,7 +6,7 @@ import com.cursee.more_bows_and_arrows.registry.FabricEntityTypeRegistry;
 import com.cursee.more_bows_and_arrows.registry.FabricItemProperties;
 import com.cursee.more_bows_and_arrows.renderer.projectile.*;
 
-public class FabricExampleModClient implements ClientModInitializer {
+public class MoreBowsAndArrowsFabricClient implements ClientModInitializer {
   @Override
   public void onInitializeClient() {
     FabricItemProperties.registerBowModels();
