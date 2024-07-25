@@ -7,9 +7,10 @@
     "item": "more_bows_and_arrows:diamond_bow"
   },
   "result": {
-    "item": "more_bows_and_arrows:netherite_bow"
+    "count": 1,
+    "id": "more_bows_and_arrows:netherite_bow"
   },
   "template": {
-    "id": "minecraft:netherite_upgrade_smithing_template"
+    "item": "minecraft:netherite_upgrade_smithing_template"
   }
 }
