@@ -35,7 +35,7 @@ public class GoldArrowEntity extends AbstractArrow implements IAbstractModArrow 
     }
 
     public GoldArrowEntity(Level level, LivingEntity livingEntity, ItemStack itemStack, ItemStack itemStack2) {
-        super(FabricEntityTypeRegistry.AMETHYST_ARROW_ENTITY, livingEntity, level, itemStack, itemStack);
+        super(FabricEntityTypeRegistry.GOLD_ARROW_ENTITY, livingEntity, level, itemStack, itemStack);
         this.setBaseDamage(this.getBaseDamage() + 4.0d);
     }
 

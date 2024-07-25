@@ -35,7 +35,7 @@ public class EmeraldArrowEntity extends AbstractArrow implements IAbstractModArr
     }
 
     public EmeraldArrowEntity(Level level, LivingEntity livingEntity, ItemStack itemStack, ItemStack itemStack2) {
-        super(FabricEntityTypeRegistry.AMETHYST_ARROW_ENTITY, livingEntity, level, itemStack, itemStack);
+        super(FabricEntityTypeRegistry.EMERALD_ARROW_ENTITY, livingEntity, level, itemStack, itemStack);
         this.setBaseDamage(this.getBaseDamage() + 4.0d);
     }
 

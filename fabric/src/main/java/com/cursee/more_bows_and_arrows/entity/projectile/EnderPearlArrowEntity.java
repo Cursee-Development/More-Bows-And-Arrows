@@ -38,18 +38,18 @@ public class EnderPearlArrowEntity extends AbstractArrow implements IAbstractMod
     }
 
     public EnderPearlArrowEntity(Level level, LivingEntity livingEntity, ItemStack itemStack, ItemStack itemStack2) {
-        super(FabricEntityTypeRegistry.AMETHYST_ARROW_ENTITY, livingEntity, level, itemStack, itemStack);
+        super(FabricEntityTypeRegistry.ENDER_PEARL_ARROW_ENTITY, livingEntity, level, itemStack, itemStack);
         this.setBaseDamage(this.getBaseDamage() + 4.0d);
     }
 
     public void onHitEntity(@NotNull EntityHitResult hitResult) {
         checkArrowEntityDamage(this, hitResult);
 
-        if (!this.level.isClientSide) {
+        if (!this.level().isClientSide) {
             Entity owner = this.getOwner();
             Entity hitEntity = hitResult.getEntity();
 
-            hitEntity.teleportTo((ServerLevel) owner.level, owner.xo, owner.yo, owner.zo, RelativeMovement.ROTATION, 1.0f, 1.0f);
+            hitEntity.teleportTo((ServerLevel) owner.level(), owner.xo, owner.yo, owner.zo, RelativeMovement.ROTATION, 1.0f, 1.0f);
         }
 
         super.onHitEntity(hitResult);
@@ -57,11 +57,11 @@ public class EnderPearlArrowEntity extends AbstractArrow implements IAbstractMod
 
     public void onHitBlock(@NotNull BlockHitResult hitResult) {
 
-        if (!this.level.isClientSide && this.getOwner() != null) {
+        if (!this.level().isClientSide && this.getOwner() != null) {
             Entity owner = this.getOwner();
 
             assert owner != null;
-            owner.teleportTo((ServerLevel) owner.level, this.xo, this.yo, this.zo, RelativeMovement.ROTATION, owner.getYRot(), owner.getXRot());
+            owner.teleportTo((ServerLevel) owner.level(), this.xo, this.yo, this.zo, RelativeMovement.ROTATION, owner.getYRot(), owner.getXRot());
         }
 
         this.remove(RemovalReason.DISCARDED);

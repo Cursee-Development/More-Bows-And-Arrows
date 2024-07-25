@@ -35,7 +35,7 @@ public class BlazeRodArrowEntity extends AbstractArrow implements IAbstractModAr
     }
 
     public BlazeRodArrowEntity(Level level, LivingEntity livingEntity, ItemStack itemStack, ItemStack itemStack2) {
-        super(FabricEntityTypeRegistry.AMETHYST_ARROW_ENTITY, livingEntity, level, itemStack, itemStack);
+        super(FabricEntityTypeRegistry.BLAZE_ROD_ARROW_ENTITY, livingEntity, level, itemStack, itemStack);
         this.setBaseDamage(this.getBaseDamage() + 4.0d);
     }
 

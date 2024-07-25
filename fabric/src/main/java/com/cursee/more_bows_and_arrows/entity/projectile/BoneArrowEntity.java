@@ -35,7 +35,7 @@ public class BoneArrowEntity extends AbstractArrow implements IAbstractModArrow 
     }
 
     public BoneArrowEntity(Level level, LivingEntity livingEntity, ItemStack itemStack, ItemStack itemStack2) {
-        super(FabricEntityTypeRegistry.AMETHYST_ARROW_ENTITY, livingEntity, level, itemStack, itemStack);
+        super(FabricEntityTypeRegistry.BONE_ARROW_ENTITY, livingEntity, level, itemStack, itemStack);
         this.setBaseDamage(this.getBaseDamage() + 4.0d);
     }
 

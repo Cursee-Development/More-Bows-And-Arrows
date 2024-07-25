@@ -37,25 +37,25 @@ public class TNTArrowEntity extends AbstractArrow implements IAbstractModArrow {
     }
 
     public TNTArrowEntity(Level level, LivingEntity livingEntity, ItemStack itemStack, ItemStack itemStack2) {
-        super(FabricEntityTypeRegistry.AMETHYST_ARROW_ENTITY, livingEntity, level, itemStack, itemStack);
+        super(FabricEntityTypeRegistry.TNT_ARROW_ENTITY, livingEntity, level, itemStack, itemStack);
         this.setBaseDamage(this.getBaseDamage() + 4.0d);
     }
 
     public void onHitEntity(@NotNull EntityHitResult hitResult) {
         checkArrowEntityDamage(this, hitResult);
 
-        if (!this.level.isClientSide) {
+        if (!this.level().isClientSide) {
             Entity hit = hitResult.getEntity();
-            level.explode(hit, hit.xo, hit.yo+1, hit.zo, 1.0f, true, Level.ExplosionInteraction.MOB);
+            level().explode(hit, hit.xo, hit.yo+1, hit.zo, 1.0f, true, Level.ExplosionInteraction.MOB);
         }
         super.onHitEntity(hitResult);
     }
 
     public void onHitBlock(@NotNull BlockHitResult hitResult) {
 
-        if (!this.level.isClientSide) {
+        if (!this.level().isClientSide) {
             BlockPos hit = hitResult.getBlockPos();
-            level.explode(this, hit.getX(), hit.getY()+1, hit.getZ(), 2.0f, true, Level.ExplosionInteraction.BLOCK);
+            level().explode(this, hit.getX(), hit.getY()+1, hit.getZ(), 2.0f, true, Level.ExplosionInteraction.BLOCK);
         }
         this.remove(RemovalReason.DISCARDED);
         super.onHitBlock(hitResult);

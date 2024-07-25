@@ -35,7 +35,7 @@ public class CopperArrowEntity extends AbstractArrow implements IAbstractModArro
     }
 
     public CopperArrowEntity(Level level, LivingEntity livingEntity, ItemStack itemStack, ItemStack itemStack2) {
-        super(ForgeEntityTypeRegistry.AMETHYST_ARROW_ENTITY.get(), livingEntity, level, itemStack, itemStack);
+        super(ForgeEntityTypeRegistry.COPPER_ARROW_ENTITY.get(), livingEntity, level, itemStack, itemStack);
         this.setBaseDamage(this.getBaseDamage() + 4.0d);
     }
 

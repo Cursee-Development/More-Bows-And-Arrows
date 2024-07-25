@@ -44,7 +44,7 @@ public class FlintAndSteelArrowEntity extends AbstractArrow implements IAbstract
     }
 
     public FlintAndSteelArrowEntity(Level level, LivingEntity livingEntity, ItemStack itemStack, ItemStack itemStack2) {
-        super(ForgeEntityTypeRegistry.AMETHYST_ARROW_ENTITY.get(), livingEntity, level, itemStack, itemStack);
+        super(ForgeEntityTypeRegistry.FLINT_AND_STEEL_ARROW_ENTITY.get(), livingEntity, level, itemStack, itemStack);
         this.setBaseDamage(this.getBaseDamage() + 4.0d);
     }
 

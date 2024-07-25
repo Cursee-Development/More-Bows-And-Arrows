@@ -37,7 +37,7 @@ public class TNTArrowEntity extends AbstractArrow implements IAbstractModArrow {
     }
 
     public TNTArrowEntity(Level level, LivingEntity livingEntity, ItemStack itemStack, ItemStack itemStack2) {
-        super(ForgeEntityTypeRegistry.AMETHYST_ARROW_ENTITY.get(), livingEntity, level, itemStack, itemStack);
+        super(ForgeEntityTypeRegistry.TNT_ARROW_ENTITY.get(), livingEntity, level, itemStack, itemStack);
         this.setBaseDamage(this.getBaseDamage() + 4.0d);
     }
 

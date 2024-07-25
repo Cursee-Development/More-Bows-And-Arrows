@@ -35,7 +35,7 @@ public class IronArrowEntity extends AbstractArrow implements IAbstractModArrow 
     }
 
     public IronArrowEntity(Level level, LivingEntity livingEntity, ItemStack itemStack, ItemStack itemStack2) {
-        super(ForgeEntityTypeRegistry.AMETHYST_ARROW_ENTITY.get(), livingEntity, level, itemStack, itemStack);
+        super(ForgeEntityTypeRegistry.IRON_ARROW_ENTITY.get(), livingEntity, level, itemStack, itemStack);
         this.setBaseDamage(this.getBaseDamage() + 4.0d);
     }
 

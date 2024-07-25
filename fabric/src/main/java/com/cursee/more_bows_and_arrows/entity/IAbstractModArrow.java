@@ -51,19 +51,19 @@ public interface IAbstractModArrow {
   
   default void checkArrowBlockDamage(AbstractArrow arrow, BlockHitResult hitResult) {
     // operate server-side
-    if (!arrow.level.isClientSide) {
+    if (!arrow.level().isClientSide) {
 
       // arrow has an owner
       if (arrow.getOwner() != null) {
 //        for (ItemStack stack : arrow.getOwner().getHandSlots()) {
 //          if (this.getClass() == BambooArrowEntity.class && stack.is(FabricItemRegistry.BAMBOO_BOW)) {
 //            if (Blocks.BAMBOO.defaultBlockState().canSurvive(arrow.level, hitResult.getBlockPos())) {
-//              if (isDirt(arrow.level.getBlockState(hitResult.getBlockPos()))) {
-//                arrow.level.setBlock(hitResult.getBlockPos(), Blocks.PODZOL.defaultBlockState(), 2);
-//                arrow.level.setBlock(hitResult.getBlockPos().above(), Blocks.BAMBOO.defaultBlockState(), 2);
+//              if (isDirt(arrow.level().getBlockState(hitResult.getBlockPos()))) {
+//                arrow.level().setBlock(hitResult.getBlockPos(), Blocks.PODZOL.defaultBlockState(), 2);
+//                arrow.level().setBlock(hitResult.getBlockPos().above(), Blocks.BAMBOO.defaultBlockState(), 2);
 //                arrow.discard();
-//              } else if (arrow.level.getBlockState(hitResult.getBlockPos()).is(Blocks.BAMBOO)) {
-//                arrow.level.setBlock(hitResult.getBlockPos().above(), Blocks.BAMBOO.defaultBlockState(), 2);
+//              } else if (arrow.level().getBlockState(hitResult.getBlockPos()).is(Blocks.BAMBOO)) {
+//                arrow.level().setBlock(hitResult.getBlockPos().above(), Blocks.BAMBOO.defaultBlockState(), 2);
 //                arrow.discard();
 //              }
 //            }
@@ -79,7 +79,7 @@ public interface IAbstractModArrow {
   
   default void checkArrowEntityDamage(AbstractArrow arrow, EntityHitResult hitResult) {
     // operating on the server and likely fired from an Entity
-    if (!arrow.level.isClientSide && arrow.getOwner() != null) {
+    if (!arrow.level().isClientSide && arrow.getOwner() != null) {
 //      for (ItemStack stack : arrow.getOwner().getHandSlots()) {
 //
 //        for (int i = 0; i < woodenBowItems.length; i++) {
@@ -232,12 +232,12 @@ public interface IAbstractModArrow {
 //                lightningBoltEntity.setVisualOnly(false);
 //                // lightningBoltEntity.setDamage(10.0F); // not valid in fabric
 //                lightningBoltEntity.setCause((ServerPlayer) arrow.getOwner());
-//                arrow.level.addFreshEntity(lightningBoltEntity);
+//                arrow.level().addFreshEntity(lightningBoltEntity);
 //                arrow.discard();
 //              }
 //              case 6 -> {
 //                // create explosion at entity
-//                arrow.level.explode(hitEntity, hitEntity.xo, hitEntity.yo + 1, hitEntity.zo, 1.0f, true, Level.ExplosionInteraction.MOB);
+//                arrow.level().explode(hitEntity, hitEntity.xo, hitEntity.yo + 1, hitEntity.zo, 1.0f, true, Level.ExplosionInteraction.MOB);
 //                arrow.discard();
 //              }
 //              case 7 -> {
@@ -245,7 +245,7 @@ public interface IAbstractModArrow {
 //                for (int i = 0; i < 4; i++) {
 //                  Chicken spawnableChicken = new Chicken(EntityType.CHICKEN, arrow.level);
 //                  spawnableChicken.setPos(hitEntity.getEyePosition());
-//                  arrow.level.addFreshEntity(spawnableChicken);
+//                  arrow.level().addFreshEntity(spawnableChicken);
 //                }
 //                arrow.discard();
 //              }
@@ -254,7 +254,7 @@ public interface IAbstractModArrow {
 //                for (int i = 0; i < 3; i++) {
 //                  Zombie spawnableZombie = new Zombie(EntityType.ZOMBIE, arrow.level);
 //                  spawnableZombie.setPos(hitEntity.getEyePosition());
-//                  arrow.level.addFreshEntity(spawnableZombie);
+//                  arrow.level().addFreshEntity(spawnableZombie);
 //                }
 //                arrow.discard();
 //              }
@@ -266,7 +266,7 @@ public interface IAbstractModArrow {
 //      }
     }
     // operating on the server and likely fired from a dispenser
-    else if (!arrow.level.isClientSide && arrow.getOwner() == null) {
+    else if (!arrow.level().isClientSide && arrow.getOwner() == null) {
 
       Entity hitEntity = hitResult.getEntity();
       // PAPER ARROW OR MOSS ARROW FIRED FROM DISPENSER
@@ -291,27 +291,27 @@ public interface IAbstractModArrow {
             arrow.discard();
           }
           case 5 -> {
-            LightningBolt lightningBoltEntity = new LightningBolt(EntityType.LIGHTNING_BOLT, arrow.level);
+            LightningBolt lightningBoltEntity = new LightningBolt(EntityType.LIGHTNING_BOLT, arrow.level());
             lightningBoltEntity.setPos(hitResult.getLocation());
             lightningBoltEntity.setVisualOnly(false);
             // lightningBoltEntity.setDamage(10.0F); // not valid in fabric
             lightningBoltEntity.setCause(null);
-            arrow.level.addFreshEntity(lightningBoltEntity);
+            arrow.level().addFreshEntity(lightningBoltEntity);
             arrow.discard();
           }
           case 6 -> {
-            arrow.level.explode(hitEntity, hitEntity.xo, hitEntity.yo + 1, hitEntity.zo, 1.0f, true, Level.ExplosionInteraction.MOB);
+            arrow.level().explode(hitEntity, hitEntity.xo, hitEntity.yo + 1, hitEntity.zo, 1.0f, true, Level.ExplosionInteraction.MOB);
             arrow.discard();
           }
           case 7 -> {
             for (int i = 0; i < 7; i++) {
-              arrow.level.addFreshEntity(new Chicken(EntityType.CHICKEN, arrow.level));
+              arrow.level().addFreshEntity(new Chicken(EntityType.CHICKEN, arrow.level()));
             }
             arrow.discard();
           }
           case 8 -> {
             for (int i = 0; i < 3; i++) {
-              arrow.level.addFreshEntity(new Zombie(EntityType.ZOMBIE, arrow.level));
+              arrow.level().addFreshEntity(new Zombie(EntityType.ZOMBIE, arrow.level()));
             }
             arrow.discard();
           }

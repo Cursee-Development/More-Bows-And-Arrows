@@ -44,7 +44,7 @@ public class FlintAndSteelArrowEntity extends AbstractArrow implements IAbstract
     }
 
     public FlintAndSteelArrowEntity(Level level, LivingEntity livingEntity, ItemStack itemStack, ItemStack itemStack2) {
-        super(FabricEntityTypeRegistry.AMETHYST_ARROW_ENTITY, livingEntity, level, itemStack, itemStack);
+        super(FabricEntityTypeRegistry.FLINT_AND_STEEL_ARROW_ENTITY, livingEntity, level, itemStack, itemStack);
         this.setBaseDamage(this.getBaseDamage() + 4.0d);
     }
 
@@ -56,20 +56,20 @@ public class FlintAndSteelArrowEntity extends AbstractArrow implements IAbstract
 
     public void onHitBlock(@NotNull BlockHitResult hitResult) {
         BlockPos pos = hitResult.getBlockPos();
-        BlockState state = this.level.getBlockState(pos);
+        BlockState state = this.level().getBlockState(pos);
 
         if (!CampfireBlock.canLight(state) && !CandleBlock.canLight(state) && !CandleCakeBlock.canLight(state)) {
-            if (!this.level.isClientSide) {
+            if (!this.level().isClientSide) {
                 Entity entity = this.getOwner();
                 if (!(entity instanceof Mob)) { // might break lol
                     BlockPos blockpos2 = hitResult.getBlockPos().relative(hitResult.getDirection());
-                    if (this.level.isEmptyBlock(blockpos2)) {
-                        this.level.setBlockAndUpdate(blockpos2, BaseFireBlock.getState(this.level, blockpos2));
+                    if (this.level().isEmptyBlock(blockpos2)) {
+                        this.level().setBlockAndUpdate(blockpos2, BaseFireBlock.getState(this.level(), blockpos2));
                     }
                 }
             }
         } else {
-            level.setBlock(pos, state.setValue(BlockStateProperties.LIT, Boolean.valueOf(true)), 11);
+            level().setBlock(pos, state.setValue(BlockStateProperties.LIT, Boolean.valueOf(true)), 11);
         }
 
         this.remove(RemovalReason.DISCARDED);
