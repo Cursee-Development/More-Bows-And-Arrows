@@ -1,4 +1,4 @@
-package com.cursee.examplemod.platform.services;
+package com.cursee.more_bows_and_arrows.platform.services;
 
 public interface IPlatformHelper {
 

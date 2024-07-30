@@ -79,6 +79,15 @@ dependencies {
     annotationProcessor("org.spongepowered:mixin:0.8.5-SNAPSHOT:processor")
 
     implementation fg.deobf("curse.maven:monolib-968432:5443121")
+
+    compileOnly(annotationProcessor("io.github.llamalad7:mixinextras-common:0.4.0"))
+    implementation(jarJar("io.github.llamalad7:mixinextras-forge:0.4.0")) {
+        jarJar.ranged(it, "[0.4.0,)")
+    }
+
+    implementation fg.deobf("curse.maven:zeta-968868:5418213")
+
+    implementation fg.deobf("curse.maven:quark-243121:5418252")
 }
 
 tasks.withType(JavaCompile).configureEach {

@@ -1,6 +1,6 @@
-package com.cursee.examplemod.mixin;
+package com.cursee.more_bows_and_arrows.mixin;
 
-import com.cursee.examplemod.Constants;
+import com.cursee.more_bows_and_arrows.Constants;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.TitleScreen;
 import org.spongepowered.asm.mixin.Mixin;
