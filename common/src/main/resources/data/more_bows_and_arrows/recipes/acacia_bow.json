@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "W": [
+      {
+        "item": "minecraft:acacia_log"
+      },
+      {
+        "item": "minecraft:acacia_wood"
+      }
+    ],
+    "#": {
+      "item": "minecraft:stick"
+    },
+    "X": {
+      "item": "minecraft:string"
+    }
+  },
+  "pattern": [
+    " #X",
+    "#WX",
+    " #X"
+  ],
+  "result": {
+    "item": "more_bows_and_arrows:acacia_bow"
+  },
+  "show_notification": true
+}
