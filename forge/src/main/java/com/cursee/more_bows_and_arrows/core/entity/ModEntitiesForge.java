@@ -22,7 +22,7 @@ public class ModEntitiesForge {
     public static final String TEXTURE_LOCATION = new ResourceLocation(Constants.MOD_ID, "textures/entity/arrow").toString();
 
     public static final RegistryObject<EntityType<?>> ENDER_PEARL_ARROW = registerEntityType("ender_pearl_arrow",
-            () -> EntityType.Builder.of((type, level) -> new _TypedArrow(MultiArrowItem.Type.ENDER_PEARL, type, level), MobCategory.MISC)
+            () -> EntityType.Builder.of(EnderPearlArrow::new, MobCategory.MISC)
                     .sized(0.5F, 0.5F)
                     .clientTrackingRange(4)
                     .updateInterval(20)
