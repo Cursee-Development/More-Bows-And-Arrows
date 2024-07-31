@@ -2,16 +2,10 @@ package com.cursee.more_bows_and_arrows.core.entity;
 
 import com.cursee.more_bows_and_arrows.Constants;
 import com.cursee.more_bows_and_arrows.core.entity.custom.*;
-import com.cursee.more_bows_and_arrows.core.item.custom.MultiArrowItem;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
-import net.minecraft.world.entity.projectile.AbstractArrow;
-import net.minecraft.world.entity.projectile.Arrow;
 import net.minecraftforge.registries.RegistryObject;
-
-import java.util.function.Supplier;
 
 import static com.cursee.more_bows_and_arrows.core.registry.ModRegistryForge.registerEntityType;
 
