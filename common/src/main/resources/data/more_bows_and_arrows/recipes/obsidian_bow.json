@@ -3,7 +3,7 @@
   "category": "equipment",
   "key": {
     "#": {
-      "item": "minecraft:obsitemian"
+      "item": "minecraft:obsidian"
     },
     "X": {
       "item": "minecraft:string"
@@ -15,7 +15,7 @@
     " #X"
   ],
   "result": {
-    "item": "more_bows_and_arrows:obsitemian_bow"
+    "item": "more_bows_and_arrows:obsidian_bow"
   },
   "show_notification": true
 }

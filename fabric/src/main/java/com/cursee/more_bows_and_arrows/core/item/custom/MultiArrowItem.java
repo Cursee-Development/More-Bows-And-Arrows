@@ -11,9 +11,9 @@ import org.jetbrains.annotations.NotNull;
 
 public class MultiArrowItem extends ArrowItem {
 
-    private MultiArrowItem.Type type;
+    private Type type;
 
-    public MultiArrowItem(MultiArrowItem.Type type, Properties p_40512_) {
+    public MultiArrowItem(Type type, Properties p_40512_) {
         super(p_40512_);
 
         this.type = type;

@@ -17,6 +17,9 @@
     "entrypoints": {
         "main": [
             "com.cursee.more_bows_and_arrows.MoreBowsAndArrowsFabric"
+        ],
+        "client": [
+            "com.cursee.more_bows_and_arrows.MoreBowsAndArrowsFabricClient"
         ]
     },
     "mixins": [

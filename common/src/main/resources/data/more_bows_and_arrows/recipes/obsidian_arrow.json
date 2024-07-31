@@ -8,7 +8,7 @@
   ],
   "key": {
     "C": {
-      "item": "minecraft:obsitemian"
+      "item": "minecraft:obsidian"
     },
     "S": {
       "item": "minecraft:stick"
@@ -18,7 +18,7 @@
     }
   },
   "result": {
-      "item": "more_bows_and_arrows:obsitemian_arrow",
+      "item": "more_bows_and_arrows:obsidian_arrow",
       "count": 1
   }
 }
