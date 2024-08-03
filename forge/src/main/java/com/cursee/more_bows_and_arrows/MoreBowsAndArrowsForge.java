@@ -1,11 +1,13 @@
 package com.cursee.more_bows_and_arrows;
 
 import com.cursee.monolib.core.sailing.Sailing;
-import com.cursee.more_bows_and_arrows.registry.*;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.AnvilUpdateEvent;
+import com.cursee.more_bows_and_arrows.core.item.ModItemsForge;
+import com.cursee.more_bows_and_arrows.core.registry.ModDispenserRegistryForge;
+import com.cursee.more_bows_and_arrows.core.registry.ModRegistryForge;
+import net.minecraft.client.renderer.item.ItemProperties;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -21,28 +23,72 @@ public class MoreBowsAndArrowsForge {
 
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 
-        bus.addListener(this::clientSetup);
-        bus.addListener(this::commonSetup);
+        ModRegistryForge.registerAll(bus);
 
-        ForgeItemRegistry.register(bus);
-        ForgeEntityTypeRegistry.register(bus);
-        ForgeCreativeModeTabRegistry.register(bus);
+        bus.addListener(this::client);
 
-        bus.addListener(ForgeCreativeModeTabRegistry::addToCombatTab);
-
-        MinecraftForge.EVENT_BUS.register(this);
+        bus.addListener(this::common);
     }
 
-    public void clientSetup(FMLClientSetupEvent event) {
-        event.enqueueWork(ForgeItemProperties::addCustomItemProperties);
+    public void client(FMLClientSetupEvent event) {
+
+        event.enqueueWork(() -> {
+            MoreBowsAndArrowsForge.registerBowProperties(ModItemsForge.OAK_BOW.get());
+            MoreBowsAndArrowsForge.registerBowProperties(ModItemsForge.STRIPPED_OAK_BOW.get());
+            MoreBowsAndArrowsForge.registerBowProperties(ModItemsForge.DARK_OAK_BOW.get());
+            MoreBowsAndArrowsForge.registerBowProperties(ModItemsForge.STRIPPED_DARK_OAK_BOW.get());
+            MoreBowsAndArrowsForge.registerBowProperties(ModItemsForge.SPRUCE_BOW.get());
+            MoreBowsAndArrowsForge.registerBowProperties(ModItemsForge.STRIPPED_SPRUCE_BOW.get());
+            MoreBowsAndArrowsForge.registerBowProperties(ModItemsForge.BIRCH_BOW.get());
+            MoreBowsAndArrowsForge.registerBowProperties(ModItemsForge.STRIPPED_BIRCH_BOW.get());
+            MoreBowsAndArrowsForge.registerBowProperties(ModItemsForge.JUNGLE_BOW.get());
+            MoreBowsAndArrowsForge.registerBowProperties(ModItemsForge.STRIPPED_JUNGLE_BOW.get());
+            MoreBowsAndArrowsForge.registerBowProperties(ModItemsForge.ACACIA_BOW.get());
+            MoreBowsAndArrowsForge.registerBowProperties(ModItemsForge.STRIPPED_ACACIA_BOW.get());
+            MoreBowsAndArrowsForge.registerBowProperties(ModItemsForge.MANGROVE_BOW.get());
+            MoreBowsAndArrowsForge.registerBowProperties(ModItemsForge.STRIPPED_MANGROVE_BOW.get());
+            MoreBowsAndArrowsForge.registerBowProperties(ModItemsForge.CHERRY_BOW.get());
+            MoreBowsAndArrowsForge.registerBowProperties(ModItemsForge.STRIPPED_CHERRY_BOW.get());
+            MoreBowsAndArrowsForge.registerBowProperties(ModItemsForge.BAMBOO_BOW.get());
+            MoreBowsAndArrowsForge.registerBowProperties(ModItemsForge.STRIPPED_BAMBOO_BOW.get());
+            MoreBowsAndArrowsForge.registerBowProperties(ModItemsForge.CRIMSON_STEM_BOW.get());
+            MoreBowsAndArrowsForge.registerBowProperties(ModItemsForge.STRIPPED_CRIMSON_STEM_BOW.get());
+            MoreBowsAndArrowsForge.registerBowProperties(ModItemsForge.WARPED_STEM_BOW.get());
+            MoreBowsAndArrowsForge.registerBowProperties(ModItemsForge.STRIPPED_WARPED_STEM_BOW.get());
+
+            MoreBowsAndArrowsForge.registerBowProperties(ModItemsForge.PAPER_BOW.get());
+            MoreBowsAndArrowsForge.registerBowProperties(ModItemsForge.MOSS_BOW.get());
+            MoreBowsAndArrowsForge.registerBowProperties(ModItemsForge.LAPIS_BOW.get());
+            MoreBowsAndArrowsForge.registerBowProperties(ModItemsForge.AMETHYST_BOW.get());
+            MoreBowsAndArrowsForge.registerBowProperties(ModItemsForge.BONE_BOW.get());
+            MoreBowsAndArrowsForge.registerBowProperties(ModItemsForge.COAL_BOW.get());
+            MoreBowsAndArrowsForge.registerBowProperties(ModItemsForge.EMERALD_BOW.get());
+            MoreBowsAndArrowsForge.registerBowProperties(ModItemsForge.BLAZE_BOW.get());
+            MoreBowsAndArrowsForge.registerBowProperties(ModItemsForge.OBSIDIAN_BOW.get());
+
+            MoreBowsAndArrowsForge.registerBowProperties(ModItemsForge.IRON_BOW.get());
+            MoreBowsAndArrowsForge.registerBowProperties(ModItemsForge.COPPER_BOW.get());
+            MoreBowsAndArrowsForge.registerBowProperties(ModItemsForge.GOLD_BOW.get());
+            MoreBowsAndArrowsForge.registerBowProperties(ModItemsForge.DIAMOND_BOW.get());
+            MoreBowsAndArrowsForge.registerBowProperties(ModItemsForge.NETHERITE_BOW.get());
+        });
     }
 
-    public void commonSetup(FMLCommonSetupEvent event) {
-        ForgeDispenserBehaviorRegistry.registerArrowsAsProjectiles();
+    public void common(FMLCommonSetupEvent event) {
+        ModDispenserRegistryForge.registerArrowsAsProjectiles();
     }
 
-    @SubscribeEvent
-    public void onAnvilUpdate(AnvilUpdateEvent event) {
-        ForgeBowRepairRegistry.register(event);
+    private static <T extends Item> void registerBowProperties(T bow) {
+
+        ItemProperties.register(bow, ResourceLocation.withDefaultNamespace("pull"), (itemStack, clientLevel, livingEntity, i) -> {
+            if (livingEntity == null) {
+                return 0.0F;
+            } else {
+                return livingEntity.getUseItem() != itemStack ? 0.0F : (float)(itemStack.getUseDuration(livingEntity) - livingEntity.getUseItemRemainingTicks()) / 20.0F;
+            }
+        });
+        ItemProperties.register(bow, ResourceLocation.withDefaultNamespace("pulling"), (itemStack, clientLevel, livingEntity, i) -> {
+            return livingEntity != null && livingEntity.isUsingItem() && livingEntity.getUseItem() == itemStack ? 1.0F : 0.0F;
+        });
     }
 }

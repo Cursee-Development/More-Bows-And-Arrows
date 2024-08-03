@@ -1,0 +1,61 @@
+package com.cursee.more_bows_and_arrows;
+
+import com.cursee.more_bows_and_arrows.core.entity.ModEntitiesForge;
+import com.cursee.more_bows_and_arrows.core.entity.renderer.*;
+import net.minecraft.client.renderer.item.ItemProperties;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.item.Item;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.client.event.EntityRenderersEvent;
+
+@EventBusSubscriber(modid = Constants.MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+public class MoreBowsAndArrowsNeoForgeClient {
+
+//    @SubscribeEvent
+//    public void onClientSetup(FMLClientSetupEvent event) {
+//
+//
+//    }
+
+    @SubscribeEvent
+    public static void onRegisterEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
+
+        event.registerEntityRenderer((EntityType) ModEntitiesForge.AMETHYST_ARROW.get(), AmethystArrowRenderer::new);
+        event.registerEntityRenderer((EntityType) ModEntitiesForge.BAMBOO_ARROW.get(), BambooArrowRenderer::new);
+        event.registerEntityRenderer((EntityType) ModEntitiesForge.BLAZE_ROD_ARROW.get(), BlazeRodArrowRenderer::new);
+        event.registerEntityRenderer((EntityType) ModEntitiesForge.BONE_ARROW.get(), BoneArrowRenderer::new);
+        event.registerEntityRenderer((EntityType) ModEntitiesForge.CACTUS_ARROW.get(), CactusArrowRenderer::new);
+        event.registerEntityRenderer((EntityType) ModEntitiesForge.COAL_ARROW.get(), CoalArrowRenderer::new);
+        event.registerEntityRenderer((EntityType) ModEntitiesForge.COPPER_ARROW.get(), CopperArrowRenderer::new);
+        event.registerEntityRenderer((EntityType) ModEntitiesForge.DIAMOND_ARROW.get(), DiamondArrowRenderer::new);
+        event.registerEntityRenderer((EntityType) ModEntitiesForge.EMERALD_ARROW.get(), EmeraldArrowRenderer::new);
+        event.registerEntityRenderer((EntityType) ModEntitiesForge.ENDER_PEARL_ARROW.get(), EnderPearlArrowRenderer::new);
+        event.registerEntityRenderer((EntityType) ModEntitiesForge.FLINT_AND_STEEL_ARROW.get(), FlintAndSteelArrowRenderer::new);
+        event.registerEntityRenderer((EntityType) ModEntitiesForge.FLINT_ARROW.get(), FlintArrowRenderer::new);
+        event.registerEntityRenderer((EntityType) ModEntitiesForge.GOLD_ARROW.get(), GoldArrowRenderer::new);
+        event.registerEntityRenderer((EntityType) ModEntitiesForge.IRON_ARROW.get(), IronArrowRenderer::new);
+        event.registerEntityRenderer((EntityType) ModEntitiesForge.LAPIS_ARROW.get(), LapisArrowRenderer::new);
+        event.registerEntityRenderer((EntityType) ModEntitiesForge.MOSS_ARROW.get(), MossArrowRenderer::new);
+        event.registerEntityRenderer((EntityType) ModEntitiesForge.NETHERITE_ARROW.get(), NetheriteArrowRenderer::new);
+        event.registerEntityRenderer((EntityType) ModEntitiesForge.OBSIDIAN_ARROW.get(), ObsidianArrowRenderer::new);
+        event.registerEntityRenderer((EntityType) ModEntitiesForge.PAPER_ARROW.get(), PaperArrowRenderer::new);
+        event.registerEntityRenderer((EntityType) ModEntitiesForge.TNT_ARROW.get(), TNTArrowRenderer::new);
+    }
+
+    private static <T extends Item> void registerBowProperties(T bow) {
+
+        ItemProperties.register(bow, ResourceLocation.withDefaultNamespace("pull"), (itemStack, clientLevel, livingEntity, i) -> {
+            if (livingEntity == null) {
+                return 0.0F;
+            } else {
+                return livingEntity.getUseItem() != itemStack ? 0.0F : (float)(itemStack.getUseDuration(livingEntity) - livingEntity.getUseItemRemainingTicks()) / 20.0F;
+            }
+        });
+        ItemProperties.register(bow, ResourceLocation.withDefaultNamespace("pulling"), (itemStack, clientLevel, livingEntity, i) -> {
+            return livingEntity != null && livingEntity.isUsingItem() && livingEntity.getUseItem() == itemStack ? 1.0F : 0.0F;
+        });
+    }
+}

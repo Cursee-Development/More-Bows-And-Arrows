@@ -1,42 +1,104 @@
 package com.cursee.more_bows_and_arrows;
 
+import com.cursee.more_bows_and_arrows.core.entity.ModEntitiesFabric;
+import com.cursee.more_bows_and_arrows.core.entity.renderer.*;
+import com.cursee.more_bows_and_arrows.core.item.ModItemsFabric;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
-import com.cursee.more_bows_and_arrows.registry.FabricEntityTypeRegistry;
-import com.cursee.more_bows_and_arrows.registry.FabricItemProperties;
-import com.cursee.more_bows_and_arrows.renderer.projectile.*;
+import net.minecraft.client.renderer.item.ItemProperties;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 
 public class MoreBowsAndArrowsFabricClient implements ClientModInitializer {
-  @Override
-  public void onInitializeClient() {
-    FabricItemProperties.registerBowModels();
-    registerArrowRenderers();
-  }
-  
-  private void registerArrowRenderers() {
     
-    EntityRendererRegistry.register(FabricEntityTypeRegistry.FLINT_AND_STEEL_ARROW_ENTITY, FlintAndSteelArrowRenderer::new);
-    EntityRendererRegistry.register(FabricEntityTypeRegistry.ENDER_PEARL_ARROW_ENTITY, EnderPearlArrowRenderer::new);
-    EntityRendererRegistry.register(FabricEntityTypeRegistry.TNT_ARROW_ENTITY, TNTArrowRenderer::new);
-    EntityRendererRegistry.register(FabricEntityTypeRegistry.PAPER_ARROW_ENTITY, PaperArrowRenderer::new);
-    EntityRendererRegistry.register(FabricEntityTypeRegistry.MOSS_ARROW_ENTITY, MossArrowRenderer::new);
+    @Override
+    public void onInitializeClient() {
 
-    EntityRendererRegistry.register(FabricEntityTypeRegistry.AMETHYST_ARROW_ENTITY, AmethystArrowRenderer::new);
-    EntityRendererRegistry.register(FabricEntityTypeRegistry.BAMBOO_ARROW_ENTITY, BambooArrowRenderer::new);
-    EntityRendererRegistry.register(FabricEntityTypeRegistry.BLAZE_ROD_ARROW_ENTITY, BlazeRodArrowRenderer::new);
-    EntityRendererRegistry.register(FabricEntityTypeRegistry.BONE_ARROW_ENTITY, BoneArrowRenderer::new);
-    EntityRendererRegistry.register(FabricEntityTypeRegistry.CACTUS_ARROW_ENTITY, CactusArrowRenderer::new);
-    EntityRendererRegistry.register(FabricEntityTypeRegistry.COAL_ARROW_ENTITY, CoalArrowRenderer::new);
-    EntityRendererRegistry.register(FabricEntityTypeRegistry.EMERALD_ARROW_ENTITY, EmeraldArrowRenderer::new);
-    EntityRendererRegistry.register(FabricEntityTypeRegistry.LAPIS_ARROW_ENTITY, LapisArrowRenderer::new);
-    EntityRendererRegistry.register(FabricEntityTypeRegistry.OBSIDIAN_ARROW_ENTITY, ObsidianArrowRenderer::new);
-    EntityRendererRegistry.register(FabricEntityTypeRegistry.FLINT_ARROW_ENTITY, FlintArrowRenderer::new);
+        registerBow(ModItemsFabric.OAK_BOW);
+        registerBow(ModItemsFabric.STRIPPED_OAK_BOW);
+        registerBow(ModItemsFabric.DARK_OAK_BOW);
+        registerBow(ModItemsFabric.STRIPPED_DARK_OAK_BOW);
+        registerBow(ModItemsFabric.SPRUCE_BOW);
+        registerBow(ModItemsFabric.STRIPPED_SPRUCE_BOW);
+        registerBow(ModItemsFabric.BIRCH_BOW);
+        registerBow(ModItemsFabric.STRIPPED_BIRCH_BOW);
+        registerBow(ModItemsFabric.JUNGLE_BOW);
+        registerBow(ModItemsFabric.STRIPPED_JUNGLE_BOW);
+        registerBow(ModItemsFabric.ACACIA_BOW);
+        registerBow(ModItemsFabric.STRIPPED_ACACIA_BOW);
+        registerBow(ModItemsFabric.MANGROVE_BOW);
+        registerBow(ModItemsFabric.STRIPPED_MANGROVE_BOW);
+        registerBow(ModItemsFabric.CHERRY_BOW);
+        registerBow(ModItemsFabric.STRIPPED_CHERRY_BOW);
+        registerBow(ModItemsFabric.BAMBOO_BOW);
+        registerBow(ModItemsFabric.STRIPPED_BAMBOO_BOW);
+        registerBow(ModItemsFabric.CRIMSON_STEM_BOW);
+        registerBow(ModItemsFabric.STRIPPED_CRIMSON_STEM_BOW);
+        registerBow(ModItemsFabric.WARPED_STEM_BOW);
+        registerBow(ModItemsFabric.STRIPPED_WARPED_STEM_BOW);
 
-    EntityRendererRegistry.register(FabricEntityTypeRegistry.COPPER_ARROW_ENTITY, CopperArrowRenderer::new);
-    EntityRendererRegistry.register(FabricEntityTypeRegistry.GOLD_ARROW_ENTITY, GoldArrowRenderer::new);
+        registerBow(ModItemsFabric.PAPER_BOW);
+        registerBow(ModItemsFabric.MOSS_BOW);
+        registerBow(ModItemsFabric.LAPIS_BOW);
+        registerBow(ModItemsFabric.AMETHYST_BOW);
+        registerBow(ModItemsFabric.BONE_BOW);
+        registerBow(ModItemsFabric.COAL_BOW);
+        registerBow(ModItemsFabric.EMERALD_BOW);
+        registerBow(ModItemsFabric.BLAZE_BOW);
+        registerBow(ModItemsFabric.OBSIDIAN_BOW);
 
-    EntityRendererRegistry.register(FabricEntityTypeRegistry.IRON_ARROW_ENTITY, IronArrowRenderer::new);
-    EntityRendererRegistry.register(FabricEntityTypeRegistry.DIAMOND_ARROW_ENTITY, DiamondArrowRenderer::new);
-    EntityRendererRegistry.register(FabricEntityTypeRegistry.NETHERITE_ARROW_ENTITY, NetheriteArrowRenderer::new);
-  }
+        registerBow(ModItemsFabric.IRON_BOW);
+        registerBow(ModItemsFabric.COPPER_BOW);
+        registerBow(ModItemsFabric.GOLD_BOW);
+        registerBow(ModItemsFabric.DIAMOND_BOW);
+        registerBow(ModItemsFabric.NETHERITE_BOW);
+
+        EntityRendererRegistry.register(ModEntitiesFabric.FLINT_AND_STEEL_ARROW, FlintAndSteelArrowRenderer::new);
+        EntityRendererRegistry.register(ModEntitiesFabric.ENDER_PEARL_ARROW, EnderPearlArrowRenderer::new);
+        EntityRendererRegistry.register(ModEntitiesFabric.TNT_ARROW, TNTArrowRenderer::new);
+        EntityRendererRegistry.register(ModEntitiesFabric.PAPER_ARROW, PaperArrowRenderer::new);
+        EntityRendererRegistry.register(ModEntitiesFabric.MOSS_ARROW, MossArrowRenderer::new);
+        EntityRendererRegistry.register(ModEntitiesFabric.AMETHYST_ARROW, AmethystArrowRenderer::new);
+        EntityRendererRegistry.register(ModEntitiesFabric.BAMBOO_ARROW, BambooArrowRenderer::new);
+        EntityRendererRegistry.register(ModEntitiesFabric.BLAZE_ROD_ARROW, BlazeRodArrowRenderer::new);
+        EntityRendererRegistry.register(ModEntitiesFabric.BONE_ARROW, BoneArrowRenderer::new);
+        EntityRendererRegistry.register(ModEntitiesFabric.CACTUS_ARROW, CactusArrowRenderer::new);
+        EntityRendererRegistry.register(ModEntitiesFabric.COAL_ARROW, CoalArrowRenderer::new);
+        EntityRendererRegistry.register(ModEntitiesFabric.EMERALD_ARROW, EmeraldArrowRenderer::new);
+        EntityRendererRegistry.register(ModEntitiesFabric.LAPIS_ARROW, LapisArrowRenderer::new);
+        EntityRendererRegistry.register(ModEntitiesFabric.OBSIDIAN_ARROW, ObsidianArrowRenderer::new);
+        EntityRendererRegistry.register(ModEntitiesFabric.FLINT_ARROW, FlintArrowRenderer::new);
+        EntityRendererRegistry.register(ModEntitiesFabric.COPPER_ARROW, CopperArrowRenderer::new);
+        EntityRendererRegistry.register(ModEntitiesFabric.GOLD_ARROW, GoldArrowRenderer::new);
+        EntityRendererRegistry.register(ModEntitiesFabric.IRON_ARROW, IronArrowRenderer::new);
+        EntityRendererRegistry.register(ModEntitiesFabric.DIAMOND_ARROW, DiamondArrowRenderer::new);
+        EntityRendererRegistry.register(ModEntitiesFabric.NETHERITE_ARROW, NetheriteArrowRenderer::new);
+    }
+
+    private static void registerBow(Item bow) {
+//        ItemProperties.register(bow, ResourceLocation.withDefaultNamespace("pull"), (stack, world, entity, seed) -> {
+//            if (entity == null) {
+//                return 0.0f;
+//            }
+//            if (entity.getUseItem() != stack) {
+//                return 0.0f;
+//            }
+//            return (float)(stack.getUseDuration() - entity.getUseItemRemainingTicks()) / 20.0f;
+//        });
+//        ItemProperties.register(bow, ResourceLocation.withDefaultNamespace("pulling"),
+//                (stack, world, entity, seed) -> entity != null && entity.isUsingItem() && entity.getUseItem() == stack ? 1.0f : 0.0f);
+
+        ItemProperties.register(bow, ResourceLocation.withDefaultNamespace("pull"), (itemStack, clientLevel, livingEntity, i) -> {
+            if (livingEntity == null) {
+                return 0.0F;
+            } else {
+                return livingEntity.getUseItem() != itemStack ? 0.0F : (float)(itemStack.getUseDuration(livingEntity) - livingEntity.getUseItemRemainingTicks()) / 20.0F;
+            }
+        });
+        ItemProperties.register(bow, ResourceLocation.withDefaultNamespace("pulling"), (itemStack, clientLevel, livingEntity, i) -> {
+            return livingEntity != null && livingEntity.isUsingItem() && livingEntity.getUseItem() == itemStack ? 1.0F : 0.0F;
+        });
+
+    }
 }
