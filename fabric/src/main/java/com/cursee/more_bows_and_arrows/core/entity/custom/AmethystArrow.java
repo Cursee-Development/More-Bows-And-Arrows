@@ -22,8 +22,8 @@ public class AmethystArrow extends AbstractArrow implements ICustomArrow {
     public AmethystArrow(Level level, LivingEntity entity) {
         super((EntityType) ModEntitiesFabric.AMETHYST_ARROW, entity, level);
         this.setBaseDamage(this.getBaseDamage() + 2.0d);
-        this.ownerUUID = entity.getUUID();
-        this.cachedOwner = entity;
+//        this.ownerUUID = entity.getUUID();
+//        this.cachedOwner = entity;
     }
 
     public AmethystArrow(Level level, double x, double y, double z) {

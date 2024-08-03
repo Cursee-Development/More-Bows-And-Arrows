@@ -32,7 +32,7 @@ import static net.minecraft.world.level.levelgen.feature.Feature.isDirt;
 
 public interface ICustomArrow {
 
-    void discard();
+//    void discard();
 
     default void debug(String string) {
         if (MonoLibConfiguration.debugging) Constants.LOG.info(string);
@@ -75,7 +75,7 @@ public interface ICustomArrow {
             case ENTITY -> processEntityInteraction(arrow, (EntityHitResult) result);
         }
 
-        discard();
+//        discard();
     }
 
     @SuppressWarnings("all")
@@ -129,7 +129,8 @@ public interface ICustomArrow {
             debug("EnderPearlArrow has hit a block.");
             debug("EnderPearlArrow Has Owner " + arrow.getOwner().getDisplayName().getString());
             // arrow.getOwner().teleportTo((ServerLevel) arrow.getOwner().level(), arrow.xo, arrow.yo, arrow.zo, RelativeMovement.ROTATION, arrow.getOwner().getYRot(), arrow.getOwner().getXRot());
-            owner.teleportTo(pos.getX(), pos.getY(), pos.getZ());
+            BlockPos relativePosition = pos.relative(result.getDirection());
+            owner.teleportTo((ServerLevel) owner.level(), relativePosition.getX(), relativePosition.getY(), relativePosition.getZ(), RelativeMovement.ROTATION, owner.getYRot(), owner.getXRot());
         }
         else if (arrow instanceof FlintAndSteelArrow) {
             ICustomArrow.igniteBlockOnHit(result, level, pos, state);
@@ -156,7 +157,7 @@ public interface ICustomArrow {
             level.explode(owner, result.getBlockPos().getX(), result.getBlockPos().getY()+1, result.getBlockPos().getZ(), 2.0f, true, Level.ExplosionInteraction.TNT);
         }
 
-        discard();
+//        discard();
     }
 
     @SuppressWarnings("all")
@@ -262,7 +263,7 @@ public interface ICustomArrow {
             level.explode(owner, entity.xo, entity.yo+1, entity.zo, 1.0f, true, Level.ExplosionInteraction.TNT);
         }
 
-        discard();
+//        discard();
     }
 
     private static void igniteBlockOnHit(BlockHitResult result, Level level, BlockPos pos, BlockState state) {

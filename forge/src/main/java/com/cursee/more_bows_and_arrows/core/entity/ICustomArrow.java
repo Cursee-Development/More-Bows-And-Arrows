@@ -109,7 +109,9 @@ public interface ICustomArrow {
         else if (arrow instanceof DiamondArrow) {}
         else if (arrow instanceof EmeraldArrow) {}
         else if (arrow instanceof EnderPearlArrow) {
-            owner.teleportTo((ServerLevel) owner.level(), arrow.xo, arrow.yo, arrow.zo, RelativeMovement.ROTATION, owner.getYRot(), owner.getXRot());
+
+            BlockPos relativePosition = pos.relative(result.getDirection());
+            owner.teleportTo((ServerLevel) owner.level(), relativePosition.getX(), relativePosition.getY(), relativePosition.getZ(), RelativeMovement.ROTATION, owner.getYRot(), owner.getXRot());
         }
         else if (arrow instanceof FlintAndSteelArrow) {
             ICustomArrow.igniteBlockOnHit(result, level, pos, state);
