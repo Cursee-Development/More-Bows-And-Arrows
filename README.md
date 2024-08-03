@@ -28,12 +28,4 @@ Of course! As long as it is published only on Modrinth or CurseForge. Uploading 
 
 However, we are really grateful if you consider adding it to your Modrinth or CurseForge modpack. If you need any small changes or have any questions, contact us!
 
-**![](https://www.bisecthosting.com/images/CF/More_Bows_And_Arrows/BH_MBAA_images.webp)**
-
-![](https://media.forgecdn.net/attachments/864/192/more-bows-and-arrows-1.jpg)
-
-**![](https://media.forgecdn.net/attachments/864/194/more-bows-and-arrows-3.jpg)**
-
-**![](https://media.forgecdn.net/attachments/864/195/more-bows-and-arrows-4.jpg)**
-
 [**![](https://www.bisecthosting.com/images/CF/MultiRecipe/BH_Lupin_Discord.webp)**](https://discord.gg/X8VY5WMbe4)
