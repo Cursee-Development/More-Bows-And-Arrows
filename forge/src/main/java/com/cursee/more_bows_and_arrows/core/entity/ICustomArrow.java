@@ -1,10 +1,14 @@
 package com.cursee.more_bows_and_arrows.core.entity;
 
+import com.cursee.monolib.core.MonoLibConfiguration;
+import com.cursee.more_bows_and_arrows.Constants;
+import com.cursee.more_bows_and_arrows.core.entity.ModEntitiesForge;
 import com.cursee.more_bows_and_arrows.core.entity.custom.*;
 import com.cursee.more_bows_and_arrows.core.item.ModItemsForge;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.*;
@@ -30,6 +34,12 @@ import static net.minecraft.world.level.levelgen.feature.Feature.isDirt;
 
 public interface ICustomArrow {
 
+//    void discard();
+
+    default void debug(String string) {
+        if (MonoLibConfiguration.debugging) Constants.LOG.info(string);
+    }
+
     float NETHERITE_DAMAGE = 6.0f;
     float DIAMOND_DAMAGE = 5.0f;
     float OBSIDIAN_DAMAGE = 4.0f;
@@ -51,19 +61,23 @@ public interface ICustomArrow {
 
     float WOODEN_DAMAGE = 2.0f;
 
-    @SuppressWarnings("all")
     default void checkHitResult(AbstractArrow arrow, HitResult result) {
 
         HitResult.Type type = result.getType();
 
         if (type == HitResult.Type.MISS || arrow.level().isClientSide() || arrow.getOwner() == null) {
+            debug("failed, arrow owner null");
             return;
         }
+
+        debug("checking HitResult type");
 
         switch (type) {
             case BLOCK -> processBlockInteraction(arrow, (BlockHitResult) result);
             case ENTITY -> processEntityInteraction(arrow, (EntityHitResult) result);
         }
+
+//        discard();
     }
 
     @SuppressWarnings("all")
@@ -84,7 +98,12 @@ public interface ICustomArrow {
             stack = player.getMainHandItem();
         }
 
-        if (arrow instanceof AmethystArrow) {}
+        debug("an instance of ICustomArrow has hit a block");
+
+        if (arrow instanceof AmethystArrow) {
+            debug("AmethystArrow has hit a block.");
+            debug("AmethystArrow Has Owner" + arrow.getOwner().getDisplayName().toString());
+        }
         else if (arrow instanceof BambooArrow) {
             ICustomArrow.bambooArrowHitsBlock(owner, level, pos, state);
         }
@@ -108,8 +127,10 @@ public interface ICustomArrow {
         }
         else if (arrow instanceof DiamondArrow) {}
         else if (arrow instanceof EmeraldArrow) {}
-        else if (arrow instanceof EnderPearlArrow) {
-
+        else if (arrow instanceof EnderPearlArrow || arrow.getName().getString().contains("ender")) {
+            debug("EnderPearlArrow has hit a block.");
+            debug("EnderPearlArrow Has Owner " + arrow.getOwner().getDisplayName().getString());
+            // arrow.getOwner().teleportTo((ServerLevel) arrow.getOwner().level(), arrow.xo, arrow.yo, arrow.zo, RelativeMovement.ROTATION, arrow.getOwner().getYRot(), arrow.getOwner().getXRot());
             BlockPos relativePosition = pos.relative(result.getDirection());
             owner.teleportTo((ServerLevel) owner.level(), relativePosition.getX(), relativePosition.getY(), relativePosition.getZ(), RelativeMovement.ROTATION, owner.getYRot(), owner.getXRot());
         }
@@ -137,6 +158,8 @@ public interface ICustomArrow {
         else if (arrow instanceof TNTArrow) {
             level.explode(owner, result.getBlockPos().getX(), result.getBlockPos().getY()+1, result.getBlockPos().getZ(), 2.0f, true, Level.ExplosionInteraction.TNT);
         }
+
+//        discard();
     }
 
     @SuppressWarnings("all")
@@ -158,6 +181,7 @@ public interface ICustomArrow {
         }
 
         if (arrow instanceof AmethystArrow) {
+            debug("AmethystArrow hit an Entity");
             entity.hurt(entity.damageSources().arrow((AmethystArrow) ModEntitiesForge.AMETHYST_ARROW.get().create(level), owner), AMETHYST_DAMAGE);
         }
         else if (arrow instanceof BambooArrow) {
@@ -240,7 +264,53 @@ public interface ICustomArrow {
             entity.hurt(entity.damageSources().arrow((TNTArrow) ModEntitiesForge.TNT_ARROW.get().create(level), owner), IRON_DAMAGE);
             level.explode(owner, entity.xo, entity.yo+1, entity.zo, 1.0f, true, Level.ExplosionInteraction.TNT);
         }
+
+        checkMainhandToHurtEntity((LivingEntity) owner, (LivingEntity) entity);
     }
+
+    default void checkMainhandToHurtEntity(LivingEntity owner, LivingEntity toHurt) {
+
+        ItemStack itemStack = owner.getMainHandItem();
+        DamageSource damageSource = owner.getLastDamageSource();
+
+        if (damageSource == null) {
+            return;
+        }
+
+        switch (itemStack.getDisplayName().getString()) {
+            case "[Netherite Bow]" -> toHurt.hurt(damageSource, 6);
+            case "[Diamond Bow]" -> toHurt.hurt(damageSource, 5);
+            case "[Obsidian Bow]" -> toHurt.hurt(damageSource, 4);
+            case "[Emerald Bow]", "[Blaze Bow]" -> toHurt.hurt(damageSource, 3);
+            case "[Oak Bow]", "[Stripped Oak Bow]",
+                 "[Dark Oak Bow]", "[Stripped Dark Oak Bow]",
+                 "[Spruce Bow]", "[Stripped Spruce Bow]",
+                 "[Birch Bow]", "[Stripped Birch Bow]",
+                 "[Jungle Bow]", "[Stripped Jungle Bow]",
+                 "[Acacia Bow]", "[Stripped Acacia Bow]",
+                 "[Mangrove Bow]", "[Stripped Mangrove Bow]",
+                 "[Cherry Bow]", "[Stripped Cherry Bow]",
+                 "[Bamboo Bow]", "[Stripped Bamboo Bow]",
+                 "[Crimson Stem Bow]", "[Stripped Crimson Stem Bow]",
+                 "[Warped Stem Bow]", "[Stripped Warped Stem Bow]",
+                 "[Lapis Bow]", "[Amethyst Bow]",
+                 "[Bone Bow]", "[Coal Bow]",
+                 "[Iron Bow]", "[Copper Bow]" -> toHurt.hurt(damageSource, 2);
+            case "[Paper Bow]", "[Moss Bow]" -> {
+                Constants.LOG.info("checked paper or moss bow with proprietary arrow");
+            }
+        }
+    }
+
+
+
+
+
+
+
+
+
+
 
     private static void igniteBlockOnHit(BlockHitResult result, Level level, BlockPos pos, BlockState state) {
         if (!state.hasProperty(BlockStateProperties.LIT)) {
