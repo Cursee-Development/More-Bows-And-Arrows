@@ -17,7 +17,7 @@ dependencies {
     modImplementation "curse.maven:monolib-968432:5443112"
 
     // ToolTipFix
-    modImplementation "curse.maven:tooltipfix-411557:4577194"
+//    modImplementation "curse.maven:tooltipfix-411557:4577194"
 }
 
 loom {
