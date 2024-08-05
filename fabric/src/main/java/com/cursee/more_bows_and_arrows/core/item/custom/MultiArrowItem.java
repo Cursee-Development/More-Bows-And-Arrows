@@ -67,83 +67,103 @@ public class MultiArrowItem extends ArrowItem {
         switch (this.type) {
 
             case AMETHYST -> {
-                list.add(Component.translatable("more_bows_and_arrows.text.amethyst_arrow_lore"));
+                list.add(Component.translatable("more_bows_and_arrows.text.amethyst_arrow_lore1"));
+                list.add(Component.translatable("more_bows_and_arrows.text.amethyst_arrow_lore2"));
                 list.add(Component.translatable("more_bows_and_arrows.text.amethyst_arrow_damage"));
             }
             case BAMBOO -> {
-                list.add(Component.translatable("more_bows_and_arrows.text.bamboo_arrow_lore"));
+                list.add(Component.translatable("more_bows_and_arrows.text.bamboo_arrow_lore1"));
+                list.add(Component.translatable("more_bows_and_arrows.text.bamboo_arrow_lore2"));
                 list.add(Component.translatable("more_bows_and_arrows.text.bamboo_arrow_damage"));
             }
             case BLAZE_ROD -> {
-                list.add(Component.translatable("more_bows_and_arrows.text.blaze_rod_arrow_lore"));
+                list.add(Component.translatable("more_bows_and_arrows.text.blaze_rod_arrow_lore1"));
+                list.add(Component.translatable("more_bows_and_arrows.text.blaze_rod_arrow_lore2"));
                 list.add(Component.translatable("more_bows_and_arrows.text.blaze_rod_arrow_damage"));
             }
             case BONE -> {
-                list.add(Component.translatable("more_bows_and_arrows.text.bone_arrow_lore"));
+                list.add(Component.translatable("more_bows_and_arrows.text.bone_arrow_lore1"));
+                list.add(Component.translatable("more_bows_and_arrows.text.bone_arrow_lore2"));
                 list.add(Component.translatable("more_bows_and_arrows.text.bone_arrow_damage"));
             }
             case CACTUS -> {
-                list.add(Component.translatable("more_bows_and_arrows.text.cactus_arrow_lore"));
+                list.add(Component.translatable("more_bows_and_arrows.text.cactus_arrow_lore1"));
+                list.add(Component.translatable("more_bows_and_arrows.text.cactus_arrow_lore2"));
                 list.add(Component.translatable("more_bows_and_arrows.text.cactus_arrow_damage"));
             }
             case COAL -> {
-                list.add(Component.translatable("more_bows_and_arrows.text.coal_arrow_lore"));
+                list.add(Component.translatable("more_bows_and_arrows.text.coal_arrow_lore1"));
+                list.add(Component.translatable("more_bows_and_arrows.text.coal_arrow_lore2"));
                 list.add(Component.translatable("more_bows_and_arrows.text.coal_arrow_damage"));
             }
             case COPPER -> {
-                list.add(Component.translatable("more_bows_and_arrows.text.copper_arrow_lore"));
+                list.add(Component.translatable("more_bows_and_arrows.text.copper_arrow_lore1"));
+                list.add(Component.translatable("more_bows_and_arrows.text.copper_arrow_lore2"));
                 list.add(Component.translatable("more_bows_and_arrows.text.copper_arrow_damage"));
             }
             case DIAMOND -> {
-                list.add(Component.translatable("more_bows_and_arrows.text.diamond_arrow_lore"));
+                list.add(Component.translatable("more_bows_and_arrows.text.diamond_arrow_lore1"));
+                list.add(Component.translatable("more_bows_and_arrows.text.diamond_arrow_lore2"));
                 list.add(Component.translatable("more_bows_and_arrows.text.diamond_arrow_damage"));
             }
             case EMERALD -> {
-                list.add(Component.translatable("more_bows_and_arrows.text.emerald_arrow_lore"));
+                list.add(Component.translatable("more_bows_and_arrows.text.emerald_arrow_lore1"));
+                list.add(Component.translatable("more_bows_and_arrows.text.emerald_arrow_lore2"));
                 list.add(Component.translatable("more_bows_and_arrows.text.emerald_arrow_damage"));
             }
             case ENDER_PEARL -> {
-                list.add(Component.translatable("more_bows_and_arrows.text.ender_pearl_arrow_lore"));
+                list.add(Component.translatable("more_bows_and_arrows.text.ender_pearl_arrow_lore1"));
+                list.add(Component.translatable("more_bows_and_arrows.text.ender_pearl_arrow_lore2"));
                 list.add(Component.translatable("more_bows_and_arrows.text.ender_pearl_arrow_damage"));
             }
             case FLINT_AND_STEEL -> {
-                list.add(Component.translatable("more_bows_and_arrows.text.flint_and_steel_arrow_lore"));
+                list.add(Component.translatable("more_bows_and_arrows.text.flint_and_steel_arrow_lore1"));
+                list.add(Component.translatable("more_bows_and_arrows.text.flint_and_steel_arrow_lore2"));
                 list.add(Component.translatable("more_bows_and_arrows.text.flint_and_steel_arrow_damage"));
             }
             case FLINT -> {
-                list.add(Component.translatable("more_bows_and_arrows.text.flint_arrow_lore"));
+                list.add(Component.translatable("more_bows_and_arrows.text.flint_arrow_lore1"));
+                list.add(Component.translatable("more_bows_and_arrows.text.flint_arrow_lore2"));
                 list.add(Component.translatable("more_bows_and_arrows.text.flint_arrow_damage"));
             }
             case GOLD -> {
-                list.add(Component.translatable("more_bows_and_arrows.text.gold_arrow_lore"));
+                list.add(Component.translatable("more_bows_and_arrows.text.gold_arrow_lore1"));
+                list.add(Component.translatable("more_bows_and_arrows.text.gold_arrow_lore2"));
                 list.add(Component.translatable("more_bows_and_arrows.text.gold_arrow_damage"));
             }
             case IRON -> {
-                list.add(Component.translatable("more_bows_and_arrows.text.iron_arrow_lore"));
+                list.add(Component.translatable("more_bows_and_arrows.text.iron_arrow_lore1"));
+                list.add(Component.translatable("more_bows_and_arrows.text.iron_arrow_lore2"));
                 list.add(Component.translatable("more_bows_and_arrows.text.iron_arrow_damage"));
             }
             case LAPIS -> {
-                list.add(Component.translatable("more_bows_and_arrows.text.lapis_arrow_lore"));
+                list.add(Component.translatable("more_bows_and_arrows.text.lapis_arrow_lore1"));
+                list.add(Component.translatable("more_bows_and_arrows.text.lapis_arrow_lore2"));
                 list.add(Component.translatable("more_bows_and_arrows.text.lapis_arrow_damage"));
             }
             case MOSS -> {
-                list.add(Component.translatable("more_bows_and_arrows.text.moss_arrow_lore"));
+                list.add(Component.translatable("more_bows_and_arrows.text.moss_arrow_lore1"));
+                list.add(Component.translatable("more_bows_and_arrows.text.moss_arrow_lore2"));
                 list.add(Component.translatable("more_bows_and_arrows.text.moss_arrow_damage"));
             }
             case NETHERITE -> {
-                list.add(Component.translatable("more_bows_and_arrows.text.netherite_arrow_lore"));
+                list.add(Component.translatable("more_bows_and_arrows.text.netherite_arrow_lore1"));
+                list.add(Component.translatable("more_bows_and_arrows.text.netherite_arrow_lore2"));
                 list.add(Component.translatable("more_bows_and_arrows.text.netherite_arrow_damage"));
             }
             case OBSIDIAN -> {
-                list.add(Component.translatable("more_bows_and_arrows.text.obsidian_arrow_lore"));
+                list.add(Component.translatable("more_bows_and_arrows.text.obsidian_arrow_lore1"));
+                list.add(Component.translatable("more_bows_and_arrows.text.obsidian_arrow_lore2"));
                 list.add(Component.translatable("more_bows_and_arrows.text.obsidian_arrow_damage"));
             }
             case PAPER -> {
-                list.add(Component.translatable("more_bows_and_arrows.text.paper_arrow_lore"));
+                list.add(Component.translatable("more_bows_and_arrows.text.paper_arrow_lore1"));
+                list.add(Component.translatable("more_bows_and_arrows.text.paper_arrow_lore2"));
                 list.add(Component.translatable("more_bows_and_arrows.text.paper_arrow_damage"));
             }
             case TNT -> {
-                list.add(Component.translatable("more_bows_and_arrows.text.tnt_arrow_lore"));
+                list.add(Component.translatable("more_bows_and_arrows.text.tnt_arrow_lore1"));
+                list.add(Component.translatable("more_bows_and_arrows.text.tnt_arrow_lore2"));
                 list.add(Component.translatable("more_bows_and_arrows.text.tnt_arrow_damage"));
             }
             default -> {}
