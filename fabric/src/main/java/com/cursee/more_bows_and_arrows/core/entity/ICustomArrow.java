@@ -296,7 +296,7 @@ public interface ICustomArrow {
                  "[Bone Bow]", "[Coal Bow]",
                  "[Iron Bow]", "[Copper Bow]" -> toHurt.hurt(damageSource, 2);
             case "[Paper Bow]", "[Moss Bow]" -> {
-                Constants.LOG.info("checked paper or moss bow with proprietary arrow");
+                debug("checked paper or moss bow with proprietary arrow");
             }
         }
     }

@@ -42,6 +42,9 @@ public class AmethystArrow extends AbstractArrow implements ICustomArrow {
         debug("checking AmethystArrow onHit method HitResult parameter");
 
         this.checkHitResult(this, result);
+
+        if (result.getType() == HitResult.Type.ENTITY) this.discard();
+
         super.onHit(result);
     }
 }
