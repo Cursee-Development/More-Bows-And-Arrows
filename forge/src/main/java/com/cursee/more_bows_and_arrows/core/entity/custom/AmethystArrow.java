@@ -30,9 +30,12 @@ public class AmethystArrow extends AbstractArrow implements ICustomArrow {
     }
 
     @Override
-    protected void onHit(HitResult hitResult) {
-        this.checkHitResult(this, hitResult);
-        super.onHit(hitResult);
+    protected void onHit(HitResult result) {
+        this.checkHitResult(this, result);
+
+        if (result.getType() == HitResult.Type.ENTITY) this.discard();
+
+        super.onHit(result);
     }
 
     //    public AmethystArrow(EntityType type, Level level) {

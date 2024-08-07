@@ -36,9 +36,7 @@ public class TNTArrow extends AbstractArrow implements ICustomArrow {
     @Override
     protected void onHit(HitResult result) {
         this.checkHitResult(this, result);
+        if (result.getType() == HitResult.Type.BLOCK || result.getType() == HitResult.Type.ENTITY) this.discard();
         super.onHit(result);
-        if (result.getType() == HitResult.Type.BLOCK || result.getType() == HitResult.Type.ENTITY) {
-            this.discard();
-        }
     }
 }

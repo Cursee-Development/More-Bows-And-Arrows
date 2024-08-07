@@ -5,6 +5,7 @@ import com.cursee.more_bows_and_arrows.core.item.ModItemsForge;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.*;
@@ -240,7 +241,45 @@ public interface ICustomArrow {
             entity.hurt(entity.damageSources().arrow((TNTArrow) ModEntitiesForge.TNT_ARROW.get().create(level), owner), IRON_DAMAGE);
             level.explode(owner, entity.xo, entity.yo+1, entity.zo, 1.0f, true, Level.ExplosionInteraction.TNT);
         }
+
+        checkMainhandToHurtEntity((LivingEntity) owner, (LivingEntity) entity);
     }
+
+
+    default void checkMainhandToHurtEntity(LivingEntity owner, LivingEntity toHurt) {
+
+        ItemStack itemStack = owner.getMainHandItem();
+        DamageSource damageSource = owner.getLastDamageSource();
+
+        if (damageSource == null) {
+            return;
+        }
+
+        switch (itemStack.getDisplayName().getString()) {
+            case "[Netherite Bow]" -> toHurt.hurt(damageSource, 6);
+            case "[Diamond Bow]" -> toHurt.hurt(damageSource, 5);
+            case "[Obsidian Bow]" -> toHurt.hurt(damageSource, 4);
+            case "[Emerald Bow]", "[Blaze Bow]" -> toHurt.hurt(damageSource, 3);
+            case "[Oak Bow]", "[Stripped Oak Bow]",
+                 "[Dark Oak Bow]", "[Stripped Dark Oak Bow]",
+                 "[Spruce Bow]", "[Stripped Spruce Bow]",
+                 "[Birch Bow]", "[Stripped Birch Bow]",
+                 "[Jungle Bow]", "[Stripped Jungle Bow]",
+                 "[Acacia Bow]", "[Stripped Acacia Bow]",
+                 "[Mangrove Bow]", "[Stripped Mangrove Bow]",
+                 "[Cherry Bow]", "[Stripped Cherry Bow]",
+                 "[Bamboo Bow]", "[Stripped Bamboo Bow]",
+                 "[Crimson Stem Bow]", "[Stripped Crimson Stem Bow]",
+                 "[Warped Stem Bow]", "[Stripped Warped Stem Bow]",
+                 "[Lapis Bow]", "[Amethyst Bow]",
+                 "[Bone Bow]", "[Coal Bow]",
+                 "[Iron Bow]", "[Copper Bow]" -> toHurt.hurt(damageSource, 2);
+            case "[Paper Bow]", "[Moss Bow]" -> {
+                // debug("checked paper or moss bow with proprietary arrow");
+            }
+        }
+    }
+
 
     private static void igniteBlockOnHit(BlockHitResult result, Level level, BlockPos pos, BlockState state) {
         if (!state.hasProperty(BlockStateProperties.LIT)) {
