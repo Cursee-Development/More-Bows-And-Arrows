@@ -1,10 +1,10 @@
 package com.cursee.more_bows_and_arrows.core.item.custom;
 
+import com.cursee.more_bows_and_arrows.core.item.ModTiersForge;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.BowItem;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Tier;
-import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
 
@@ -16,6 +16,27 @@ public class TieredBowItem extends BowItem {
     public TieredBowItem(Tier $$0, Properties $$1) {
         super($$1.defaultDurability($$0.getUses()));
         this.tier = $$0;
+    }
+
+    public static void hurtWithTier(Player player, LivingEntity entity, TieredBowItem tieredBowItem) {
+
+        if (tieredBowItem.getTier() == Tiers.WOOD) entity.hurt(entity.level().damageSources().playerAttack(player), 0.5f);
+        else if (tieredBowItem.getTier() == Tiers.STONE) entity.hurt(entity.level().damageSources().playerAttack(player), 1.0f);
+        else if (tieredBowItem.getTier() == Tiers.GOLD) entity.hurt(entity.level().damageSources().playerAttack(player), 2.0f);
+        else if (tieredBowItem.getTier() == Tiers.IRON) entity.hurt(entity.level().damageSources().playerAttack(player), 3.0f);
+        else if (tieredBowItem.getTier() == Tiers.DIAMOND) entity.hurt(entity.level().damageSources().playerAttack(player), 4.0f);
+        else if (tieredBowItem.getTier() == Tiers.NETHERITE) entity.hurt(entity.level().damageSources().playerAttack(player), 6.0f);
+
+        else if (tieredBowItem.getTier() == ModTiersForge.COPPER) entity.hurt(entity.level().damageSources().playerAttack(player), 2.0f);
+        else if (tieredBowItem.getTier() == ModTiersForge.PAPER) entity.hurt(entity.level().damageSources().playerAttack(player), 0.1f);
+        else if (tieredBowItem.getTier() == ModTiersForge.MOSS) entity.hurt(entity.level().damageSources().playerAttack(player), 0.1f);
+        else if (tieredBowItem.getTier() == ModTiersForge.LAPIS) entity.hurt(entity.level().damageSources().playerAttack(player), 1.0f);
+        else if (tieredBowItem.getTier() == ModTiersForge.AMETHYST) entity.hurt(entity.level().damageSources().playerAttack(player), 1.2f);
+        else if (tieredBowItem.getTier() == ModTiersForge.BONE) entity.hurt(entity.level().damageSources().playerAttack(player), 1.2f);
+        else if (tieredBowItem.getTier() == ModTiersForge.COAL) entity.hurt(entity.level().damageSources().playerAttack(player), 1.0f);
+        else if (tieredBowItem.getTier() == ModTiersForge.EMERALD) entity.hurt(entity.level().damageSources().playerAttack(player), 2.5f);
+        else if (tieredBowItem.getTier() == ModTiersForge.BLAZE) entity.hurt(entity.level().damageSources().playerAttack(player), 1.0f);
+        else if (tieredBowItem.getTier() == ModTiersForge.OBSIDIAN) entity.hurt(entity.level().damageSources().playerAttack(player), 4.5f);
     }
 
     public Tier getTier() {

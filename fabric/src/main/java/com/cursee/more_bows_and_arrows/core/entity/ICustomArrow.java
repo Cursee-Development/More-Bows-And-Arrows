@@ -4,6 +4,7 @@ import com.cursee.monolib.core.MonoLibConfiguration;
 import com.cursee.more_bows_and_arrows.Constants;
 import com.cursee.more_bows_and_arrows.core.entity.custom.*;
 import com.cursee.more_bows_and_arrows.core.item.ModItemsFabric;
+import com.cursee.more_bows_and_arrows.core.item.custom.TieredBowItem;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -177,6 +178,10 @@ public interface ICustomArrow {
 
         if (owner instanceof Player player) {
             stack = player.getMainHandItem();
+        }
+
+        if (arrow instanceof ICustomArrow) {
+            if (owner instanceof Player player && (player.getMainHandItem().getItem() instanceof TieredBowItem tieredBowItem)) TieredBowItem.hurtWithTier(player, (LivingEntity) entity, tieredBowItem);
         }
 
         if (arrow instanceof AmethystArrow) {
