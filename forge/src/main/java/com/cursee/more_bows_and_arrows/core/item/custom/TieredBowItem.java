@@ -39,6 +39,29 @@ public class TieredBowItem extends BowItem {
         else if (tieredBowItem.getTier() == ModTiersForge.OBSIDIAN) entity.hurt(entity.level().damageSources().playerAttack(player), 4.5f);
     }
 
+    public float damageFromBowTier() {
+
+        if (this.getTier() == Tiers.WOOD) return 2.0f;
+        else if (this.getTier() == Tiers.STONE) return 2.0f;
+        else if (this.getTier() == Tiers.GOLD) return 1.5f;
+        else if (this.getTier() == Tiers.IRON) return 2.5f;
+        else if (this.getTier() == Tiers.DIAMOND) return 5.0f;
+        else if (this.getTier() == Tiers.NETHERITE) return 6.0f;
+
+        else if (this.getTier() == ModTiersForge.COPPER) return 2.0f;
+        else if (this.getTier() == ModTiersForge.PAPER) return 0.1f;
+        else if (this.getTier() == ModTiersForge.MOSS) return 0.1f;
+        else if (this.getTier() == ModTiersForge.LAPIS) return 2.0f;
+        else if (this.getTier() == ModTiersForge.AMETHYST) return 2.0f;
+        else if (this.getTier() == ModTiersForge.BONE) return 2.0f;
+        else if (this.getTier() == ModTiersForge.COAL) return 2.0f;
+        else if (this.getTier() == ModTiersForge.EMERALD) return 3.0f;
+        else if (this.getTier() == ModTiersForge.BLAZE) return 3.0f;
+        else if (this.getTier() == ModTiersForge.OBSIDIAN) return 4.0f;
+
+        return 1.0f;
+    }
+
     public Tier getTier() {
         return this.tier;
     }

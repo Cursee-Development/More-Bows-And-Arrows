@@ -85,9 +85,7 @@ dependencies {
         jarJar.ranged(it, "[0.4.0,)")
     }
 
-    implementation fg.deobf("curse.maven:zeta-968868:5418213")
-
-    implementation fg.deobf("curse.maven:quark-243121:5418252")
+    implementation fg.deobf("curse.maven:retro-damage-indicators-1003431:5268035")
 }
 
 tasks.withType(JavaCompile).configureEach {

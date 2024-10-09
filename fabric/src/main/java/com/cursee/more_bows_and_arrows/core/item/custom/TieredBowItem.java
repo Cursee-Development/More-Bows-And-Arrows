@@ -19,6 +19,29 @@ public class TieredBowItem extends BowItem {
         this.tier = $$0;
     }
 
+    public float damageFromBowTier() {
+
+        if (this.getTier() == Tiers.WOOD) return 2.0f;
+        else if (this.getTier() == Tiers.STONE) return 2.0f;
+        else if (this.getTier() == Tiers.GOLD) return 1.5f;
+        else if (this.getTier() == Tiers.IRON) return 2.5f;
+        else if (this.getTier() == Tiers.DIAMOND) return 5.0f;
+        else if (this.getTier() == Tiers.NETHERITE) return 6.0f;
+
+        else if (this.getTier() == ModTiersFabric.COPPER) return 2.0f;
+        else if (this.getTier() == ModTiersFabric.PAPER) return 0.1f;
+        else if (this.getTier() == ModTiersFabric.MOSS) return 0.1f;
+        else if (this.getTier() == ModTiersFabric.LAPIS) return 2.0f;
+        else if (this.getTier() == ModTiersFabric.AMETHYST) return 2.0f;
+        else if (this.getTier() == ModTiersFabric.BONE) return 2.0f;
+        else if (this.getTier() == ModTiersFabric.COAL) return 2.0f;
+        else if (this.getTier() == ModTiersFabric.EMERALD) return 3.0f;
+        else if (this.getTier() == ModTiersFabric.BLAZE) return 3.0f;
+        else if (this.getTier() == ModTiersFabric.OBSIDIAN) return 4.0f;
+
+        return 1.0f;
+    }
+
     public static void hurtWithTier(Player player, LivingEntity entity, TieredBowItem tieredBowItem) {
 
         if (tieredBowItem.getTier() == Tiers.WOOD) entity.hurt(entity.level().damageSources().playerAttack(player), 0.5f);
